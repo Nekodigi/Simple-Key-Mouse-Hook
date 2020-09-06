@@ -1,0 +1,7 @@
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\bin\Debug\ConsoleApp1.exe.config
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\bin\Debug\ConsoleApp1.exe
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\bin\Debug\ConsoleApp1.pdb
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\obj\Debug\SimpleKeyMouseHook.csprojAssemblyReference.cache
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\obj\Debug\SimpleKeyMouseHook.csproj.CoreCompileInputs.cache
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\obj\Debug\ConsoleApp1.exe
+C:\Asset\ProjectFile\C#\SimpleHook\SimpleKeyMouseHook\SimpleKeyMouseHook\obj\Debug\ConsoleApp1.pdb
