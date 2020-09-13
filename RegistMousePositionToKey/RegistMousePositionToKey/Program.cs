@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using GlobalHook;
 using System.Drawing;
+using System.Windows.Input;
 using static GlobalHook.GlobalKeyHookSend;
 
 namespace Globalkey
@@ -13,6 +14,7 @@ namespace Globalkey
     static class Program
     {
         static GlobalKeyHookSend gkhs;
+        static Point[] poss = new Point[10];
 
         [STAThread]
         static void Main()
@@ -31,7 +33,7 @@ namespace Globalkey
 
         static void gkhr_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            Console.WriteLine("Up" + e.KeyCode.ToString());
+            //Console.WriteLine("Up" + e.KeyCode.ToString());
             e.Handled = false;//if handled, I can't type.
             
             //gkhs.KeyOnce((int)'U');//software input for test
@@ -39,16 +41,26 @@ namespace Globalkey
 
         static void gkhr_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            Console.WriteLine("Down" + e.KeyCode.ToString());
+            Console.WriteLine("Down" + e.KeyValue.ToString());
 
             //gkhs.KeyOnce((int)'D');//software input for test
-            if (e.KeyCode == Keys.LControlKey)//select word with mouse when Left Control key Pressed
+            if (Keyboard.IsKeyDown(Key.LeftShift))
             {
-                Point firstPoint = Cursor.Position;//unit is not pixels
-                gkhs.MouseSend(0, 0, MOUSEEVENTF_LEFTDOWN);//dx, dy unit is pixel
-                gkhs.MouseSend(200, 0, MOUSEEVENTF_MOVE);//please move mouse when you want to drag and drop
-                gkhs.MouseSend(200, 0, MOUSEEVENTF_LEFTUP);
-                Cursor.Position = firstPoint;
+                if(48 <= e.KeyValue && e.KeyValue <= 57) {
+                    int num = e.KeyValue - 48;
+                    poss[num] = System.Windows.Forms.Cursor.Position;
+                    Console.WriteLine("reg"+num+" X:"+ poss[num].X+"Y:"+ poss[num].Y);
+                }
+            }
+            else
+            {
+                if (48 <= e.KeyValue && e.KeyValue <= 57)
+                {
+                    int num = e.KeyValue - 48;
+                    System.Windows.Forms.Cursor.Position = poss[num];
+                    gkhs.MouseSend(0, 0, MOUSEEVENTF_LEFTDOWN);//dx, dy unit is pixel
+                    gkhs.MouseSend(0, 0, MOUSEEVENTF_LEFTUP);
+                }
             }
             e.Handled = false;
         }
