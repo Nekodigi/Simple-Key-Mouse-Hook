@@ -7,7 +7,6 @@ using System.Windows.Forms;
 using GlobalHook;
 using System.Drawing;
 using System.Windows.Input;
-using static GlobalHook.GlobalKeyHookSend;
 
 namespace Globalkey
 {
@@ -27,7 +26,7 @@ namespace Globalkey
             gkhr.KeyDown += gkhr_KeyDown;
             gkhr.KeyUp += gkhr_KeyUp;
             GlobalMouseHookRecieve gmhr = new GlobalMouseHookRecieve();
-            gmhr.s_MouseUp += gmhr_MouseAct;
+            //gmhr.s_MouseUp += gmhr_MouseAct;
             Application.Run();
         }
 
@@ -41,7 +40,7 @@ namespace Globalkey
 
         static void gkhr_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            Console.WriteLine("Down" + e.KeyValue.ToString());
+           // Console.WriteLine("Down" + e.KeyValue.ToString());
 
             //gkhs.KeyOnce((int)'D');//software input for test
             if (Keyboard.IsKeyDown(Key.LeftShift))
@@ -71,14 +70,15 @@ namespace Globalkey
         const int MOUSEEVENTF_VIRTUALDESK = 0x4000;
         const int MOUSEEVENTF_ABSOLUTE = 0x8000;
 
-        static void gmhr_MouseAct(object sender, System.Windows.Forms.MouseEventArgs e)//never click console anyway
+        static void gmhr_MouseAct(object sender,System.Windows.Forms. MouseEventArgs e)//never click console anyway
         {
             //Console.WriteLine(GlobalMouseHookRecieve.mousePosition.x);
-            Console.WriteLine("X:"+ System.Windows.Forms.Cursor.Position.X+ "Y:" + System.Windows.Forms.Cursor.Position.Y);
+            //Console.WriteLine("X:"+ System.Windows.Forms.Cursor.Position.X+ "Y:" + System.Windows.Forms.Cursor.Position.Y);
             //gkhs.MouseSet(100, 0);//move with delta x (px)
             //GlobalKeyHookSend.mouse_event(MOUSEEVENTF_LEFTDOWN, Cursor.Position.X, Cursor.Position.Y, 0, MAGIC_NUMBER);//I can use instead of that code but, we have to set MAGIC_NUMBER to check software input 
             //GlobalKeyHookSend.mouse_event(MOUSEEVENTF_LEFTUP, Cursor.Position.X, Cursor.Position.Y, 0, 0);
             //Cursor.Position = new Point(Cursor.Position.X, Cursor.Position.Y);
+            //e.Handled = false;
         }
 
 

@@ -220,7 +220,6 @@ namespace GlobalHook
 				//{
 				//	return -1;
 				//}
-				//MouseAction(null, new EventArgs());
 			}
 			return CallNextHookEx(hhook, code, wParam, ref lParam);
 		}
